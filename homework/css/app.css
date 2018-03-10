@@ -159,9 +159,13 @@ body {
     /* Можно поставить какую-нибудь свою картинку двери на бек */
 }
 .popup__content_level_3 {
-    background-image: url(../img/door__box.png);
+    background-image: url(../img/ice.jpg);
+    background-repeat: repeat-y;
+    opacity: 0.9;
     background-size: contain;
 }
+
+/*level 0 */
 
 .door-riddle {
     display: flex;
@@ -177,10 +181,136 @@ body {
     background-color: #583319;
     border: 1px solid #F3E9E0;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
-
     transition: background-color .3s;
 }
 
 .door-riddle__button_pressed {
     background-color: #F3E5D9;
+}
+
+/*my styles*/
+
+/*level-1*/
+.door-riddle-1 {
+    height: 100%;
+    margin: 0px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: space-around;
+    justify-items: center;
+}
+
+.door-riddle-1__button {
+    width: 64px;
+    height: 64px;
+    border-radius: 64px;
+    background-color: #963711;
+    border: 1px solid #F3E9E0;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
+    transition: background-color .3s;
+    will-change: transform;
+    z-index: 1;
+}
+
+.door-riddle-1__button_pressed {
+    transform: scale(1.2)
+}
+
+.door-riddlle-1__button-place {
+    width: 64px;
+    height: 64px;
+    border-radius: 64px;
+    background-color: #639611;
+    border: 1px solid #F3E9E0;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
+    transition: background-color .3s;
+    opacity: 0.4;
+    z-index: 99;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0.9);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.door-riddle-1__button-place_ready {
+    animation-name: spin;
+    animation-duration: 600ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+/*level-2*/
+.door-riddle-2 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.door-riddle-2__button {
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    height: 100px;
+    border-radius: 10px;
+    background-image: url(../img/stone_back.jpg);
+    border: 1px solid #F3E9E0;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
+    transition: background-color .3s;
+    cursor: pointer;
+}
+
+.door-riddle-2__scale {
+    height: 30px;
+    width: 60%;
+    background: linear-gradient(to right, green 0% , red 3%);
+    margin-top: -120px;
+    margin-bottom: 120px;
+    will-change: background;
+}
+
+/*level3*/
+.door-riddle-3 {
+    height: 90%;
+    padding: 5% 10% 1% 10%;
+    display: grid;
+    grid-template-rows: 150px 1fr 80px;
+}
+.door-riddle-3 > div {
+    display: flex;
+    justify-content: center;
+}
+
+.door-riddle-3__aim {
+    width: 148px;
+    height: 148px;
+    border-radius: 100px;
+    background:  radial-gradient(red 20%, yellow 25%, green 45%)
+}
+
+.door-riddle-3__rock {
+    width: 80px;
+    height: 80px;;
+    border-radius: 100px;
+    background: url('../img/rock.png') center/cover;
+    transition-duration: .3s
+}
+
+.door-riddle-3__arrow {
+    height: 100%;
+    width: 30%;
+    background-image: url(../img/arrow-top.png); 
+    background-position-x: center;
+    background-position-y: bottom;
+    background-size: auto 0px;
+    background-repeat: no-repeat;
 }
