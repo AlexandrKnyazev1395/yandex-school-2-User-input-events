@@ -367,15 +367,8 @@ function Box(number, onUnlock) {
         }
     }
 
-    // ==== Напишите свой код для открытия сундука здесь ====
-    // Для примера сундук откроется просто по клику на него
-    /*this.popup.addEventListener('click', function () {
-        this.unlock();
-    }.bind(this));*/
-    // ==== END Напишите свой код для открытия сундука здесь ====
-
     this.showCongratulations = function () {
-        alert('Поздравляю! Игра пройдена!');
+        alert('Дисквалификация! Вы принимали допинг!');
     };
 }
 Box.prototype = Object.create(DoorBase.prototype);

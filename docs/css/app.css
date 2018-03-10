@@ -27,7 +27,7 @@ body {
 }
 
 .level_0 {
-    background-image: url(../img/level_0_bg.jpg);
+    background-image: url(../img/level_0_bg1.jpg);
     height: 180px;
     position: relative;
 }
@@ -40,13 +40,13 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url(../img/logo.png) no-repeat center 25px;
+    background: url(../img/logo2.png) no-repeat center 25px;
     background-size: contain;
     pointer-events: none;
 }
 
 .level_1 {
-    background-image: url(../img/level_1_bg.png);
+    background-image: url(../img/level_1_bg1.png);
     height: 235px;
 }
 
@@ -76,7 +76,7 @@ body {
 }
 
 .door_locked {
-    background: url(../img/door_locked.png) no-repeat top left;
+    background: url(../img/door_locked2.png) no-repeat top left;
 }
 
 .door_disabled {
