@@ -233,7 +233,8 @@ function Box(number, onUnlock) {
     var button = this.popup.querySelector('.door-riddle-3__rock'); //камень, который кидаем
     var aim = this.popup.querySelector('.door-riddle-3__aim'); //цель, куда кидаем камень
     var arrow = this.popup.querySelector('.door-riddle-3__arrow') //стрелка, тображающая силу броска
-    
+
+    //информация о броске
     var throwStoneInfo = {
         startCoordinates: undefined,
         currentCoordinates: undefined,
@@ -244,18 +245,22 @@ function Box(number, onUnlock) {
     button.addEventListener('pointerdown', _onButtonPointerDown.bind(this));
     button.addEventListener('pointerup', _onButtonPointerUp.bind(this));
     button.addEventListener('pointermove', _onButtonPointerMove.bind(this));
+
     function _onButtonPointerDown(e) {
+        //записываем начальные координаты
         var coordinates = [e.pageX, e.pageY];
         throwStoneInfo.startCoordinates = coordinates;
     }
 
     function _onButtonPointerUp(e) {
+        //записываем конечные координаты
         var coordinates = [e.pageX, e.pageY];
         throwStoneInfo.endCoordinates = coordinates;
         throwRock.apply(this);
     }
 
     function _onButtonPointerMove(e) {
+        //записываем текцщие координаты
         var coordinates = [e.pageX, e.pageY];
         throwStoneInfo.currentCoordinates = coordinates;
         calculateThrow();
@@ -292,10 +297,10 @@ function Box(number, onUnlock) {
 
     function throwRock() {
         var power = throwStoneInfo.power;
-
         var startCoordinates = throwStoneInfo.startCoordinates;
         var endCoordinates = throwStoneInfo.endCoordinates;
         var t = 0.1;
+        //с шагом 0.1 передвигаем камень по вектору, пока сила не станет равна 0
         while (power >= 0) {
             var Vx = endCoordinates[0] - startCoordinates[0];
             var Vy = endCoordinates[1] - startCoordinates[1];
@@ -307,7 +312,7 @@ function Box(number, onUnlock) {
         }
         setTimeout(function () {
             checkCondition.apply(this);
-        }.bind(this), 500);
+        }.bind(this), 400);
 
     }
 
@@ -318,12 +323,14 @@ function Box(number, onUnlock) {
     }
 
     function checkCondition() {
+        //координаты центра цели
         var aimCoordinates = aim.getBoundingClientRect();
         var circleCenter = [
             aimCoordinates.left + aimCoordinates.width / 2,
             aimCoordinates.top + aimCoordinates.height / 2
         ];
         var radius = aimCoordinates.width / 2;
+        //координаты центра камня
         var stoneCoordinates = button.getBoundingClientRect();
         var stoneCenter = [
             stoneCoordinates.left + stoneCoordinates.width / 2,
@@ -333,6 +340,7 @@ function Box(number, onUnlock) {
         var x = stoneCenter[0];
         var y = stoneCenter[1];
         var easyMod = 30;
+        //находится ли камень в круге?
         var isInCircle = ((x - circleCenter[0]) ** 2 + (y - circleCenter[1]) ** 2) <= radius ** 2 + easyMod;
         if (isInCircle) {
             setTimeout(function () {
@@ -343,6 +351,7 @@ function Box(number, onUnlock) {
         else{
             resetGame()
         }
+        
         function resetGame() {
             arrow.style.backgroundSize = `auto 0px`;
             button.style.transform = `none`;
