@@ -13,8 +13,8 @@ function DoorBase(number, onUnlock) {
     this.popup = document.querySelector('.popup_level_' + number);
     this.close = this.popup.querySelector('.popup__close');
 
-    this.isLocked = true;
-    this.isDisabled = this.door.classList.contains('door_disabled');
+    //this.isLocked = true;
+    this.isDisabled = false //this.door.classList.contains('door_disabled');
 
     this.door.addEventListener('click', onDoorClick.bind(this));
     this.close.addEventListener('click', onCloseClick.bind(this));

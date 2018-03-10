@@ -192,6 +192,14 @@ function Door2(number, onUnlock) {
         updateScale();
         //отключаем уменьшение уровня
         clearInterval(scaleLevelReducing);
+        //отражаем кнопку по горизонтали
+        if(button.classList.contains('door-riddle-2__button_reflect')) {
+            button.classList.remove('door-riddle-2__button_reflect')
+        }
+        else {
+            button.classList.add('door-riddle-2__button_reflect')
+        }
+        
     }
 
     function _onButtonPointerUp(e) {
